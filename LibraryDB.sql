@@ -41,6 +41,7 @@ AS
 SELECT Books.Id, Books.Name, Books.PageCount, Authors.Name + ' ' + Authors.Surname AS 'AuthorFullName' FROM Books
 JOIN Authors ON Books.AuthorId = Authors.Id
 
+SELECT * FROM showbooks
 
 --2
 CREATE PROCEDURE usp_showbooks
@@ -50,6 +51,7 @@ SELECT Books.Id, Books.Name, Books.PageCount, Authors.Name + ' ' + Authors.Surna
 JOIN Authors ON Books.AuthorId = Authors.Id
 WHERE Books.Name LIKE @searched OR  Authors.Name + ' ' + Authors.Surname LIKE @searched
 
+EXEC usp_showbooks 'Book1'
 
 --3
 CREATE PROCEDURE usp_insert
@@ -59,6 +61,7 @@ INSERT INTO Authors
 VALUES
 (@name, @surname)
 
+EXEC usp_insert 'Xelil', 'Rza'
 
 --4
 CREATE PROCEDURE usp_update
@@ -69,6 +72,8 @@ SET Name = @name, Surname = @surname
 WHERE Id = @id
 
 
+EXEC usp_update 1, 'Cabbar', 'Qaryagdioglu'
+
 --5
 CREATE PROCEDURE usp_delete
 @id INT
@@ -76,6 +81,7 @@ AS
 DELETE FROM Authors
 WHERE Id = @id
 
+EXEC usp_delete 2
 
 --6
 CREATE VIEW showauthorinfo
@@ -83,3 +89,5 @@ AS
 SELECT Authors.Id, Authors.Name + ' ' + Authors.Surname AS 'FullName', 
 (SELECT COUNT(Id) FROM Books) AS 'BooksCount', 
 (SELECT MAX(PageCount) FROM Books) AS 'MaxPageCount' FROM Authors
+
+SELECT * FROM showauthorinfo
