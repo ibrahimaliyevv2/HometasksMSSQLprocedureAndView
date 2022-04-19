@@ -41,8 +41,3 @@ Id-author id-si
 FullName - Name ve Surname birləşməsi
 BooksCount - Həmin authorun əlaqəli olduğu kitabların sayı
 MaxPageCount - həmin authorun əlaqəli olduğu kitabların içərisindəki max pagecount dəyəri
-
-Classworks:
-04.18Homework-1.sql-de Homework-in kodlari.
-Task-1 Spotify.png-deki database
-Query-2.sql de ise  Task-1 ve Task-2 bin kodlari
